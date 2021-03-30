@@ -1,0 +1,18 @@
+
+e
+java:S2095Q"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ì®å
+e
+java:S20956"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ì®å
+t
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(üàèÉüÿÿÿÿ
+M
+java:S1135G"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+Q	java:S125V"<This block of commented-out lines of code should be removed.(¶­ÆÑ
+A
+java:S1168H"+Return an empty collection instead of null.(¥¹ï
+b
+java:S2095""GUse try-with-resources or close this "Statement" in a "finally" clause.(œ©ûÿÿÿÿ
+M
+java:S1135d"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+M
+java:S1135j"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ

@@ -1,0 +1,24 @@
+
+f
+java:S2095‘"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(†Æö‰
+j
+java:S2095q"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×Êı‰ÿÿÿÿÿ
+k
+java:S2095—"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(Æõ±Ğøÿÿÿÿ
+e
+java:S2095U"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ì®å
+b
+java:S2095'"GUse try-with-resources or close this "Statement" in a "finally" clause.(œ©ûÿÿÿÿ
+e
+java:S2095>"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ì®å
+Æ
+java:S1598"¯This file "ReimbursementDao.java" should be located in "com\project1\dao" directory, not in "C:\Users\Daniel\Documents\GitHub\sleepycat\sleepycat\src\main\java\factor-re\dao".(ÉœîÑ
+
+java:S1186¯"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Äİİæşÿÿÿÿ
+t
+java:S2293#"YReplace the type specification in this constructor call with the diamond operator ("<>").(ä°Ô¬üÿÿÿÿ
+t
+java:S2293Q"YReplace the type specification in this constructor call with the diamond operator ("<>").(ä°Ô¬üÿÿÿÿ
+S	java:S106c"9Replace this use of System.out or System.err by a logger.(‚Ğæúÿÿÿÿ
+J
+java:S1172g"/Remove this unused method parameter "username".(éÙ×Îøÿÿÿÿ
