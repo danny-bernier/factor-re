@@ -78,15 +78,14 @@ public class UserServlet extends HttpServlet {
 
         //exception from parsing id to integer
         } catch (NumberFormatException e) {
-            //todo log stack track
             LOGGER.debug("Issue when trying to parse user provided header id to integer in UserService doGet()", e);
             resp.setStatus(400);
             req.getRequestDispatcher("/400.html");
 
         //general exception
         } catch (Exception e){
-            //todo log stack trace
             LOGGER.error("An exception was thrown in UserService doGet()", e);
+            resp.setStatus(500);
             req.getRequestDispatcher("/error.html");
         }
     }
