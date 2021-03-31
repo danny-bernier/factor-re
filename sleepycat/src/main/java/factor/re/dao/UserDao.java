@@ -11,7 +11,6 @@ import java.util.List;
 import factor.re.model.User;
 import org.apache.log4j.Logger;
 
-import com.project1.util.ConnectionUtil;
 
 /*
  * Purpose of this Dao is to send/retrieve info about a reimbursement
@@ -29,19 +28,19 @@ public class UserDao implements GenericDao <User> {
 	public List<User> getList() {
 		List<User> l = new ArrayList<User>();
 		
-		try (Connection c = ConnectionUtil.getInstance().getConnection()) {
-			String qSql = "SELECT * FROM ers_users";
-			Statement s = c.createStatement();
-			ResultSet rs = s.executeQuery(qSql);
-			
-			while(rs.next()) {
-				l.add(objectConstructor(rs));
-			}
-			LOGGER.debug("A list of users was retrieved from the database.");
-		} catch (SQLException e) {
-			e.printStackTrace();
-			LOGGER.error("An attempt to get all users from the database failed.");
-		}
+//		try (Connection c = ConnectionUtil.getInstance().getConnection()) {
+//			String qSql = "SELECT * FROM ers_users";
+//			Statement s = c.createStatement();
+//			ResultSet rs = s.executeQuery(qSql);
+//
+//			while(rs.next()) {
+//				l.add(objectConstructor(rs));
+//			}
+//			LOGGER.debug("A list of users was retrieved from the database.");
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			LOGGER.error("An attempt to get all users from the database failed.");
+//		}
 		return l;
 	}
 
@@ -49,20 +48,20 @@ public class UserDao implements GenericDao <User> {
 	public User getById(int id) {
 		User u = null;
 		
-		try(Connection c = ConnectionUtil.getInstance().getConnection()) {
-			String qSql = "SELECT * FROM ers_users WHERE ers_users_id = ?";
-			PreparedStatement ps = c.prepareStatement(qSql);
-			ps.setInt(1, id);
-			ResultSet rs = ps.executeQuery();
-			
-			if(rs.next())
-				u = objectConstructor(rs);
-			
-			LOGGER.debug("Information about user ID " + id + " was retrieved from the database.");
-		} catch (SQLException e) {
-			e.printStackTrace();
-			LOGGER.error("An attempt to get info about user ID " + id + " from the database failed.");
-		}
+//		try(Connection c = ConnectionUtil.getInstance().getConnection()) {
+//			String qSql = "SELECT * FROM ers_users WHERE ers_users_id = ?";
+//			PreparedStatement ps = c.prepareStatement(qSql);
+//			ps.setInt(1, id);
+//			ResultSet rs = ps.executeQuery();
+//
+//			if(rs.next())
+//				u = objectConstructor(rs);
+//
+//			LOGGER.debug("Information about user ID " + id + " was retrieved from the database.");
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			LOGGER.error("An attempt to get info about user ID " + id + " from the database failed.");
+//		}
 		return u;
 	}
 	
@@ -76,22 +75,22 @@ public class UserDao implements GenericDao <User> {
 	public User getByUsername(String username) {
 		User u = null;
 		
-		try(Connection c = ConnectionUtil.getInstance().getConnection()) {
-			String qSql = "SELECT * FROM ers_users WHERE ers_username = ?";
-			PreparedStatement ps = c.prepareStatement(qSql);
-			ps.setString(1, username.toLowerCase());
-			ResultSet rs = ps.executeQuery();
-			
-			if(rs.next()) {
-				//System.out.println("User object was created!");
-				u = objectConstructor(rs);
-			}
-			
-			LOGGER.debug("Information about username " + username + " was retrieved from the database.");
-		} catch (SQLException e) {
-			e.printStackTrace();
-			LOGGER.error("An attempt to get info about username " + username + " from the database failed.");
-		}
+//		try(Connection c = ConnectionUtil.getInstance().getConnection()) {
+//			String qSql = "SELECT * FROM ers_users WHERE ers_username = ?";
+//			PreparedStatement ps = c.prepareStatement(qSql);
+//			ps.setString(1, username.toLowerCase());
+//			ResultSet rs = ps.executeQuery();
+//
+//			if(rs.next()) {
+//				//System.out.println("User object was created!");
+//				u = objectConstructor(rs);
+//			}
+//
+//			LOGGER.debug("Information about username " + username + " was retrieved from the database.");
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			LOGGER.error("An attempt to get info about username " + username + " from the database failed.");
+//		}
 		return u;
 	}
 
