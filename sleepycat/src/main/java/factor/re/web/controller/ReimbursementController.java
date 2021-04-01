@@ -211,6 +211,7 @@ public class ReimbursementController extends AbstractController{
             //if required headers were not present/were empty
             } else {
                 badRequest();
+                req.getParameter()
             }
 
         //if id, status, or resolver could not be parsed
