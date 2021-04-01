@@ -30,6 +30,10 @@ public class ReimbursementService {
 	public List<Reimbursement> fetchAllReimbursements() {
 		return rd.getList();
 	}
+
+	public void deleteReimbursement(Reimbursement r){
+		rd.delete (r);
+	}
 	
 	public List<Reimbursement> getReimbursementsByUserID(int id) {
 		return rd.getByUserId(id);
@@ -37,6 +41,10 @@ public class ReimbursementService {
 	
 	public void updateReimbursement(int reimb_id, int resolver_id, int status_id) {
 		rd.update(reimb_id,resolver_id,status_id);
+	}
+
+	public void insertReimbursement(Reimbursement r){
+		rd.insert (r);
 	}
 
 	public Reimbursement getReimbursementByID(int id) {

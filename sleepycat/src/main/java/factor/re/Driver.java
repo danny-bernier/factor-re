@@ -1,26 +1,30 @@
 package factor.re;
 
 import factor.re.model.Reimbursement;
+import factor.re.model.User;
 import factor.re.service.ReimbursementService;
+import factor.re.service.UserService;
 
 import java.util.List;
 
 public class Driver {
     public static void main(String[] args) {
         ReimbursementService reimbService = new ReimbursementService ();
-        List<Reimbursement> result = reimbService.fetchAllReimbursements();
-        for(Reimbursement res: result){
-            System.out.println (res);
+        UserService us = new UserService ();
+
+        User user = us.getUserById (6);
+        List<User> result = us.fetchAllUsers ();
+        for(User users: result) {
+            System.out.println (users);
         }
+        System.out.println();
 
-//        reimbService.updateReimbursement(1,4,2);
-        Reimbursement re = reimbService.getReimbursementByID (1);
-        System.out.println (re);
+        us.delete (user);
 
-        System.out.println ("TESTING GET BY USER ID");
-        List<Reimbursement> result2 = reimbService.getReimbursementsByUserID(1);
-        for(Reimbursement res: result2){
-            System.out.println (res);
+        System.out.println();
+        List<User> results = us.fetchAllUsers ();
+        for(User users: results) {
+            System.out.println (users);
         }
     }
 }

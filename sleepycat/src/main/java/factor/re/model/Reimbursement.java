@@ -53,6 +53,17 @@ public class Reimbursement {
 		this.type_id = type_id;
 	}
 
+	public Reimbursement(float amount, Timestamp submitted, Timestamp resolved, String description, int author, int resolver, int status_id, int type_id) {
+		this.amount = amount;
+		this.submitted = submitted;
+		this.resolved = resolved;
+		this.description = description;
+		this.author = author;
+		this.resolver = resolver;
+		this.status_id = status_id;
+		this.type_id = type_id;
+	}
+
 	public int getId() {
 		return id;
 	}
