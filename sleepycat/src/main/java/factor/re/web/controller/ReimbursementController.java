@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Daniel Bernier
@@ -24,7 +25,8 @@ public class ReimbursementController extends AbstractController{
     public enum Requests {
         ID,
         ALL,
-        ADD
+        ADD,
+        RESOLVE
     }
 
 
@@ -81,12 +83,14 @@ public class ReimbursementController extends AbstractController{
                 case ADD:
                     requestAdd();
                     break;
+                case RESOLVE:
+                    requestResolve();
             }
 
             //closing response writer
             resp.getWriter().close();
 
-            //exception from failed parse of ID
+        //general Exception
         } catch (Exception e){
             LOGGER.error("An exception was thrown in " + this.getClass().getSimpleName(), e);
             resp.setStatus(500);
@@ -103,6 +107,7 @@ public class ReimbursementController extends AbstractController{
      * @throws IOException thrown by {@link HttpServletResponse#getWriter()}
      */
     private void requestByID() throws IOException {
+
         try {
             if (req.getHeader("id") != null && !req.getHeader("id").equals("")) {
 
@@ -117,13 +122,15 @@ public class ReimbursementController extends AbstractController{
                     resp.getWriter().println(reimbursementAsJSON);
                 }
 
+                resp.setStatus(200);
+
             //if no id was provided
             } else {
                 badRequest();
             }
 
         //if id could not be parsed
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException ignored) {
             badRequest();
         }
     }
@@ -147,6 +154,8 @@ public class ReimbursementController extends AbstractController{
             String reimbursementAsJSON = gson.toJson(r);
             resp.getWriter().println(reimbursementAsJSON);
         }
+
+        resp.setStatus(200);
     }
 
 
@@ -158,7 +167,56 @@ public class ReimbursementController extends AbstractController{
      * @throws IOException thrown by {@link HttpServletResponse#getWriter()}
      */
     private void requestAdd() throws IOException{
-        //TODO implement
+
+        //getting body JSON from request
+        String body = req.getReader().lines().collect(Collectors.joining());
+
+        //trying to create new Reimbursement
+        if(new ReimbursementService().createReimbursement(body))
+            resp.setStatus(201);
+        else
+            badRequest();
+
+    }
+
+
+    /**
+     * Updates resolution information in a Reimbursement
+     * @throws IOException thrown by {@link HttpServletResponse#getWriter()}
+     */
+    private void requestResolve() throws IOException{
+        try {
+
+            //gathering required header information
+            String id = req.getHeader("id");
+            String status = req.getHeader("status");
+            String resolver = req.getHeader("resolver");
+
+            //if required headers are present and not empty
+            if ((resolver != null && status != null && id != null)
+                    && (!resolver.equals("") && !status.equals("") && !id.equals(""))) {
+
+                //parsing headers to integers
+                int reimbursementId = Integer.parseInt(id);
+                int reimbursementStatus = Integer.parseInt(status);
+                int reimbursementResolver = Integer.parseInt(resolver);
+
+                //updating reimbursement with resolver
+                if(new ReimbursementService().updateReimbursements(reimbursementId, reimbursementResolver, reimbursementStatus)){
+                    resp.setStatus(204);
+                } else {
+                    badRequest();
+                }
+
+            //if required headers were not present/were empty
+            } else {
+                badRequest();
+            }
+
+        //if id, status, or resolver could not be parsed
+        } catch (NumberFormatException ignored){
+            badRequest();
+        }
     }
 
 

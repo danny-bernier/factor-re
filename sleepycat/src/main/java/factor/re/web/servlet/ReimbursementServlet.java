@@ -23,7 +23,11 @@ public class ReimbursementServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
 
         //Calling front controller with appropriate request dependant on header presence
-        if(req.getHeader("id") != null){
+        if(req.getHeader("resolver") != null && req.getHeader("status") != null && req.getHeader("id") != null) {
+            new FrontController(req, resp, this.getServletContext())
+                    .process(FrontController.Requests.REIMBURSEMENT_RESOLVE);
+
+        } else if(req.getHeader("id") != null) {
             new FrontController(req, resp, this.getServletContext())
                     .process(FrontController.Requests.REIMBURSEMENT_ID);
 
@@ -44,7 +48,7 @@ public class ReimbursementServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
-        //todo convert json to reimbursement
-        //todo add reimbursement to database
+        new FrontController(req, resp, this.getServletContext())
+                .process(FrontController.Requests.REIMBURSEMENT_ADD);
     }
 }

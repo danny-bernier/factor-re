@@ -117,6 +117,8 @@ public class UserController extends AbstractController {
             String userAsJSON = gson.toJson(u);
             resp.getWriter().println(userAsJSON);
         }
+
+        resp.setStatus(200);
     }
 
 
@@ -137,6 +139,7 @@ public class UserController extends AbstractController {
             User requestedUser = new UserService().getUserByUsername(username);
             String userAsJSON = new Gson().toJson(requestedUser);
             resp.getWriter().println(userAsJSON);
+            resp.setStatus(200);
 
         //if no username provided
         } else {
@@ -164,6 +167,7 @@ public class UserController extends AbstractController {
                 String userAsJSON = new Gson().toJson(requestedUser);
                 resp.getWriter().println(userAsJSON);
                 resp.getWriter().close();
+                resp.setStatus(200);
 
             //if no id was provided
             } else {
@@ -195,6 +199,7 @@ public class UserController extends AbstractController {
             User requestedUser = new UserService().getUserByLogin(username, password);
             String userAsJSON = new Gson().toJson(requestedUser);
             resp.getWriter().println(userAsJSON);
+            resp.setStatus(200);
 
         //if no username and/or password was provided
         } else {

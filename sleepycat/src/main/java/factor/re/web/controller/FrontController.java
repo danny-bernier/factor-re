@@ -23,7 +23,8 @@ public class FrontController extends AbstractController{
         USER_LOGIN,
         REIMBURSEMENT_ID,
         REIMBURSEMENT_ALL,
-        REIMBURSEMENT_ADD
+        REIMBURSEMENT_ADD,
+        REIMBURSEMENT_RESOLVE
     }
 
 
@@ -87,6 +88,9 @@ public class FrontController extends AbstractController{
                     break;
                 case REIMBURSEMENT_ADD:
                     new ReimbursementController(req, resp, context).process(ReimbursementController.Requests.ADD);
+                    break;
+                case REIMBURSEMENT_RESOLVE:
+                    new ReimbursementController(req, resp, context).process(ReimbursementController.Requests.RESOLVE);
                     break;
             }
 

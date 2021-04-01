@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -52,9 +53,12 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 		return l;
 	}
 
+	//todo remove
 	@Override
 	public Reimbursement getById(int id) {
 		Reimbursement r = null;
+		return new Reimbursement(id, 123f, Timestamp.from(Instant.now()), Timestamp.from(Instant.now()), "yoyoyoyoyo", 7,
+		13, 0, 14);
 		
 //		try(Connection c = ConnectionUtil.getInstance().getConnection()) {
 //			String qSql = "SELECT * FROM ers_reimbursement WHERE reimb_id = ?";
@@ -72,7 +76,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 //			e.printStackTrace();
 //			LOGGER.error("An attempt to get a reimbursement by ID" + id + " from the database failed.");
 //		}
-		return r;
+		//return r;
 	}
 	
 	@Override
@@ -96,6 +100,8 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 //			LOGGER.error("An attempt to get all reimbursements made by user ID " + id + " fron the database failed.");
 //		}
 		//System.out.println(l.toString());
+		l.add(new Reimbursement(id, 123f, Timestamp.from(Instant.now()), Timestamp.from(Instant.now()), "yoyoyoyoyo", 7,
+				13, 0, 14));
 		return l;
 	}
 	
