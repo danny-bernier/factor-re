@@ -16,12 +16,12 @@
 
     <servlet>
         <servlet-name>UserServlet</servlet-name>
-        <servlet-class>factor.re.servlet.UserServlet</servlet-class>
+        <servlet-class>factor.re.web.servlet.UserServlet</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>ReimbursementServlet</servlet-name>
-        <servlet-class>factor.re.servlet.ReimbursementServlet</servlet-class>
+        <servlet-class>factor.re.web.servlet.ReimbursementServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
