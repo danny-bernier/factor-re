@@ -21,6 +21,11 @@ import org.hibernate.cfg.Configuration;
  * Purpose of this Dao is to send/retrieve info about a reimbursement
  * to/from the database. It then returns the composed Reimbursement Object.
  */
+
+/**
+ * @author Lok Kan Kung
+ * UserDao with methods to manage/access User table in database
+ */
 public class UserDao implements GenericDao <User> {
 	private static final Logger LOGGER = Logger.getLogger(UserDao.class);
 
@@ -29,6 +34,14 @@ public class UserDao implements GenericDao <User> {
 						rs.getString(6), rs.getInt(7));
 	}
 
+    /**
+     * Get a list of all users in the database
+     * <p>
+     *     This utilize the session.createQuery with HQL and pull from User
+     * </p>
+     * @return a list of users
+     * {@Link UserService#fetchAllUsers()}
+     */
 	@Override
 	public List<User> getList() {
         List<User> result = new ArrayList<User>();
@@ -50,6 +63,14 @@ public class UserDao implements GenericDao <User> {
         return result;
 	}
 
+    /**
+     * Get a single user with user id in the database
+     * <p>
+     *     This utilize the session.createQuery with HQL and pull from User with the exact id
+     * </p>
+     * @return a single user with that id
+     * @param id {@Link UserService#getUserById(int)}
+     */
 	@Override
 	public User getById(int id) {
         User result = null;
@@ -78,6 +99,14 @@ public class UserDao implements GenericDao <User> {
 		throw new java.lang.UnsupportedOperationException("Not implemented");
 	}
 
+    /**
+     * Get a single user with username in the database
+     * <p>
+     *     This utilize the session.createQuery with HQL and pull from User with the exact username
+     * </p>
+     * @return a single user with that username
+     * @param username {@Link UserService#getUserByUsername(String),#getUserByLogin(String,String)}
+     */
 	@Override
 	public User getByUsername(String username) {
         User result = null;
@@ -101,6 +130,13 @@ public class UserDao implements GenericDao <User> {
         return result;
 	}
 
+    /**
+     * Insert a single user into the database
+     * <p>
+     *     This utilize the session.persist to insert the user into the database
+     * </p>
+     * @param t {@Link UserService#insert(User)}
+     */
 	@Override
 	public void insert(User t) {
         Transaction transaction = null;
@@ -123,6 +159,13 @@ public class UserDao implements GenericDao <User> {
 
 	}
 
+    /**
+     * Delete a single user from the database
+     * <p>
+     *     This utilize the session.delete to delete the user from the database
+     * </p>
+     * @param t {@Link UserService#delete(User)}
+     */
 	@Override
 	public void delete(User t) {
         Transaction transaction = null;

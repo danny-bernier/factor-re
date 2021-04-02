@@ -21,6 +21,11 @@ import org.hibernate.query.Query;
  * Purpose of this Dao is to send/retrieve info about a reimbursement
  * to/from the database. It then returns the composed Reimbursement Object.
  */
+
+/**
+ * @author Lok Kan Kung
+ * ReimbursementDao with methods to manage/access Reimbursement table in database
+ */
 public class ReimbursementDao implements GenericDao<Reimbursement> {
 	private static final Logger LOGGER = Logger.getLogger(ReimbursementDao.class);
 	
@@ -29,6 +34,14 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 							rs.getString(5), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10));
 	}
 
+	/**
+	 * Get a list of all reimbursements in the database
+	 * <p>
+	 *     This utilize the session.createQuery with HQL and pull from Reimbursement
+	 * </p>
+	 * @return a list of reimbursements
+	 * {@Link ReimbursementService#fetchAllReimbursements()}
+	 */
 	@Override
 	public List<Reimbursement> getList() {
 		List<Reimbursement> result = new ArrayList<Reimbursement>();
@@ -50,6 +63,14 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 		return result;
 	}
 
+	/**
+	 * Make an update to a reimbursement in the database
+	 * <p>
+	 *     This utilize the session.createQuery with HQL and change the resolver_id,status_id,resolved fields
+	 *     from the reimbursement with that reimb_id
+	 * </p>
+	 * @param reimb_id,resolver_id,status_id{@Link ReimbursementService#updateReimbursement(int,int,int)}
+	 */
 	public void update(int reimb_id, int resolver_id, int status_id){
 		Transaction transaction = null;
 
@@ -72,6 +93,14 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 		}
 	};
 
+	/**
+	 * Get a single reimbursement with id in the database
+	 * <p>
+	 *     This utilize the session.createQuery with HQL and pull from Reimbursement with the exact id
+	 * </p>
+	 * @return a single reimbursement with that id
+	 * @param id {@Link ReimbursementService#getReimbursementByID(int)}
+	 */
 	@Override
 	public Reimbursement getById(int id) {
 		Reimbursement result = null;
@@ -95,6 +124,14 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 		return result;
 	}
 
+	/**
+	 * Get a list of reimbursements with userId in the database
+	 * <p>
+	 *     This utilize the session.createQuery with HQL and pull from Reimbursement with related to that userId
+	 * </p>
+	 * @return a list of reimbursements with that userId
+	 * @param id {@Link ReimbursementService#getReimbursementsByUserID(int)}
+	 */
 	@Override
 	public List<Reimbursement> getByUserId(int id) {
 		List<Reimbursement> result = new ArrayList<Reimbursement>();
@@ -123,6 +160,13 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 		throw new java.lang.UnsupportedOperationException("Not implemented");
 	}
 
+	/**
+	 * Insert a single reimbursement into the database
+	 * <p>
+	 *     This utilize the session.persist to insert the reimbursement into the database
+	 * </p>
+	 * @param reimbursement {@Link ReimbursementService#insert(Reimbursement)}
+	 */
 	@Override
 	public void insert(Reimbursement reimbursement) {
 		Transaction transaction = null;
@@ -143,6 +187,13 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 		}
 	}
 
+	/**
+	 * Delete a single reimbursement from the database
+	 * <p>
+	 *     This utilize the session.delete to delete the reimbursement from the database
+	 * </p>
+	 * @param reimbursement {@Link ReimbursementService#delete(Reimbursement)}
+	 */
 	@Override
 	public void delete(Reimbursement reimbursement) {
 		Transaction transaction = null;
