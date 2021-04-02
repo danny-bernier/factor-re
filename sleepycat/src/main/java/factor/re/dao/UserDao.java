@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import factor.re.model.Reimbursement;
 import factor.re.model.User;
 import org.apache.log4j.Logger;
@@ -17,14 +16,11 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 
-/*
- * Purpose of this Dao is to send/retrieve info about a reimbursement
- * to/from the database. It then returns the composed Reimbursement Object.
- */
-
 /**
  * @author Lok Kan Kung
  * UserDao with methods to manage/access User table in database
+ * Purpose of this Dao is to send/retrieve info about a reimbursement
+ * to/from the database. It then returns the composed Reimbursement Object.
  */
 public class UserDao implements GenericDao <User> {
 	private static final Logger LOGGER = Logger.getLogger(UserDao.class);
@@ -34,6 +30,7 @@ public class UserDao implements GenericDao <User> {
 						rs.getString(6), rs.getInt(7));
 	}
 
+  
     /**
      * Get a list of all users in the database
      * <p>
@@ -63,6 +60,7 @@ public class UserDao implements GenericDao <User> {
         return result;
 	}
 
+  
     /**
      * Get a single user with user id in the database
      * <p>
@@ -99,6 +97,7 @@ public class UserDao implements GenericDao <User> {
 		throw new java.lang.UnsupportedOperationException("Not implemented");
 	}
 
+  
     /**
      * Get a single user with username in the database
      * <p>
@@ -130,6 +129,7 @@ public class UserDao implements GenericDao <User> {
         return result;
 	}
 
+  
     /**
      * Insert a single user into the database
      * <p>
@@ -159,6 +159,7 @@ public class UserDao implements GenericDao <User> {
 
 	}
 
+  
     /**
      * Delete a single user from the database
      * <p>

@@ -1,9 +1,9 @@
 package factor.re.service;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
-
 import org.apache.log4j.Logger;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import factor.re.dao.ReimbursementDao;
 import factor.re.model.Reimbursement;
@@ -32,10 +32,13 @@ public class ReimbursementService {
 		try {
 			Reimbursement r = new ObjectMapper().readValue(json, Reimbursement.class);
 			LOGGER.debug("JSON from the client was successfully parsed.");
+			r.setSubmitted(Timestamp.from(Instant.now()));
 			rd.insert(r);
+			return true;
 		} catch (Exception e) {
 			LOGGER.error("Something occurred during JSON parsing for a new reimbursement. Is the JSON malformed?");
 			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -110,5 +113,6 @@ public class ReimbursementService {
 	 */
 	public Reimbursement getReimbursementByID(int id) {
 		return rd.getById (id);
+
 	}
 }

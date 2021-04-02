@@ -1,30 +1,26 @@
 package factor.re.dao;
 
 import java.sql.*;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
-
-import org.apache.log4j.Logger;
-
-import factor.re.model.Reimbursement;
-
+import java.sql.Array;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
-/*
- * Purpose of this Dao is to send/retrieve info about a reimbursement
- * to/from the database. It then returns the composed Reimbursement Object.
- */
 
 /**
  * @author Lok Kan Kung
  * ReimbursementDao with methods to manage/access Reimbursement table in database
+ * Purpose of this Dao is to send/retrieve info about a reimbursement
+ * to/from the database. It then returns the composed Reimbursement Object.
  */
 public class ReimbursementDao implements GenericDao<Reimbursement> {
 	private static final Logger LOGGER = Logger.getLogger(ReimbursementDao.class);
@@ -34,6 +30,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 							rs.getString(5), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10));
 	}
 
+  
 	/**
 	 * Get a list of all reimbursements in the database
 	 * <p>
@@ -44,6 +41,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 	 */
 	@Override
 	public List<Reimbursement> getList() {
+
 		List<Reimbursement> result = new ArrayList<Reimbursement>();
 		Transaction transaction = null;
 
@@ -63,6 +61,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 		return result;
 	}
 
+  
 	/**
 	 * Make an update to a reimbursement in the database
 	 * <p>
@@ -93,6 +92,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 		}
 	};
 
+  
 	/**
 	 * Get a single reimbursement with id in the database
 	 * <p>
@@ -124,6 +124,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 		return result;
 	}
 
+  
 	/**
 	 * Get a list of reimbursements with userId in the database
 	 * <p>
@@ -160,6 +161,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 		throw new java.lang.UnsupportedOperationException("Not implemented");
 	}
 
+  
 	/**
 	 * Insert a single reimbursement into the database
 	 * <p>
@@ -187,6 +189,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 		}
 	}
 
+  
 	/**
 	 * Delete a single reimbursement from the database
 	 * <p>
