@@ -105,13 +105,41 @@ public class UserService {
 		try {
 			User u = new Gson().fromJson(json, User.class);
 			LOGGER.debug("JSON from the client was successfully parsed.");
-			ud.insert(u);
-			return true;
+
+			String username = u.getUsername();
+			String password = u.getPassword();
+
+			if(username != null && !username.equals("") && password != null && !password.equals("")) {
+				String full = username + password + "salt";
+
+				try {
+					//Let MessageDigest know that we want to hash using MD5
+					MessageDigest m = MessageDigest.getInstance("md5");
+					//Convert our full string to a byte array.
+					byte[] messageDigest = m.digest(full.getBytes());
+					//Convert our byte array into a signum representation of its former self.
+					BigInteger n = new BigInteger(1, messageDigest);
+
+					//Convert the whole array into a hexadecimal string.
+					String hash = n.toString(16);
+					while (hash.length() < 32) {
+						hash = "0" + hash;
+					}
+
+					u.setPassword(hash);
+
+					ud.insert(u);
+					return true;
+				} catch (NoSuchAlgorithmException e) {
+					e.printStackTrace();
+				}
+			}
 		} catch (Exception e) {
 			LOGGER.error("Something occurred during JSON parsing for a new reimbursement. Is the JSON malformed?", e);
 			e.printStackTrace();
 			return false;
 		}
+		return false;
 	}
 
 	/**

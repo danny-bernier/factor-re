@@ -1,0 +1,58 @@
+-------USER----------------
+
+/user
+
+---------GET--------------------
+	
+	/all
+	/username?username="USERNAME_HERE"
+	/delete?id=INTEGER_HERE
+	
+---------POST-------------------
+	
+	/create
+	{
+	username="",
+	password="",
+	firstname="",
+	lastname="",
+	email="",
+	role=INTEGER_HERE
+	}
+	
+	/login
+	{
+	username="",
+	password=""
+	}
+	
+----------REIMBURSEMENT-----------
+	
+/reimbursement
+
+-------GET--------------------
+
+	/all
+	/userid?id=INTEGER_HERE
+	/delete?id=INTEGER_HERE
+	/id?id=INTEGER_HERE
+	
+--------POST-------------------
+	
+	/create
+	{
+	amount=123.00, 
+	description="this is a description", 
+	author=5, 
+	resolver=0, 
+	status_id=0, 
+	type_id=1
+	}
+	
+	/resolve
+	{
+	id=INTEGER_HERE,
+	status=INTEGER_HERE,
+	resolver=INTEGER_HERE
+	}
+
