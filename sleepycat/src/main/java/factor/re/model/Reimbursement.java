@@ -5,11 +5,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-@NamedQueries({@NamedQuery(name = "getAllReimbursement", query = "from Reimbursement"),
-//		@NamedQuery(name = "getAllHumansWhereId", query = "from Human where humanId = :id"),
-//		@NamedQuery(name = "getAllHumansByNoseHoles", query = "from Human as human " +
-//				"where nose.numberOfHoles = :holes")
-				})
+@NamedQueries({@NamedQuery(name = "getAllReimbursement", query = "from Reimbursement")})
 @Entity
 @Table(name = "ers_reimbursement")
 public class Reimbursement {

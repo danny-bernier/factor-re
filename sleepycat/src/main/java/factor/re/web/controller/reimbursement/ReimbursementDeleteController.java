@@ -1,10 +1,13 @@
 package factor.re.web.controller.reimbursement;
 
+import factor.re.model.Reimbursement;
+import factor.re.service.ReimbursementService;
 import factor.re.web.controller.AbstractController;
 import org.apache.log4j.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * @author Daniel Bernier
@@ -25,8 +28,47 @@ public class ReimbursementDeleteController extends AbstractController {
         super(req, resp, context);
     }
 
+
+    /**
+     * Deletes {@link Reimbursement} from using {@link ReimbursementService} by its id.
+     * <p>
+     *     (Wraps {@link #deleteById()} to catch potential exceptions)
+     * </p>
+     */
     @Override
     public void handle() {
-        //todo is this needed?
+        try {
+            resp.setContentType("text/html");
+            resp.setCharacterEncoding("UTF-8");
+            deleteById();
+
+            //if general exception thrown log exception and redirect to error page
+        } catch (Exception e) {
+            LOGGER.error("An exception (" + e.getClass().getSimpleName() + ") was thrown in " + this.getClass().getSimpleName(), e);
+            resp.setStatus(500);
+            req.getRequestDispatcher("/error.html");
+        }
+    }
+
+
+    /**
+     * Deletes {@link Reimbursement} from using {@link ReimbursementService} by its id.
+     * @throws IOException thrown by {@link HttpServletResponse#getWriter()}
+     */
+    private void deleteById() throws IOException {
+        try {
+
+            //parsing id to integer and gathering all Reimbursements by id
+            int id = Integer.parseInt(req.getParameter("id"));
+            ReimbursementService rs = new ReimbursementService();
+            rs.deleteReimbursement(rs.getReimbursementByID(id));
+            resp.setStatus(200);
+
+        //if no proper id was provided
+        } catch (NumberFormatException ignored) {
+            LOGGER.debug("Failed parse id in " + this.getClass().getSimpleName());
+            resp.setStatus(400);
+            resp.getWriter().println("<p>could not understand id</p>");
+        }
     }
 }

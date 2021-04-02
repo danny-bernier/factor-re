@@ -75,7 +75,7 @@ public class ReimbursementResolveController extends AbstractController {
             int reimbursementResolver = Integer.parseInt(jsonMap.get("resolver"));
 
             //updating reimbursement with resolver
-            if (new ReimbursementService().updateReimbursements(reimbursementId, reimbursementResolver, reimbursementStatus)) {
+            if (new ReimbursementService().updateReimbursement(reimbursementId, reimbursementResolver, reimbursementStatus)) {
                 resp.setStatus(204);
 
             //if failed to update resolver information

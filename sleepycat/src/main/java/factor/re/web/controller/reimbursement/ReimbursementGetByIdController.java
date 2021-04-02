@@ -9,16 +9,14 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * @author Daniel Bernier
- * Controller to handle get reimbursement by user id request
+ * Controller to handle get reimbursements by id request
  */
-public class ReimbursementGetByUserIdController extends AbstractController {
+public class ReimbursementGetByIdController extends AbstractController {
 
-    private static final Logger LOGGER = Logger.getLogger(ReimbursementGetByUserIdController.class);
-
+    private static final Logger LOGGER = Logger.getLogger(ReimbursementGetByIdController.class);
 
     /**
      * Simple constructor initializes context, request, and response
@@ -27,15 +25,15 @@ public class ReimbursementGetByUserIdController extends AbstractController {
      * @param resp    {@link HttpServletResponse Response} associated with HTTP request
      * @param context {@link ServletContext Context} associated with HTTP request
      */
-    public ReimbursementGetByUserIdController(HttpServletRequest req, HttpServletResponse resp, ServletContext context) {
+    public ReimbursementGetByIdController(HttpServletRequest req, HttpServletResponse resp, ServletContext context) {
         super(req, resp, context);
     }
 
 
     /**
-     * Gather {@link Reimbursement Reimbursements} from {@link ReimbursementService} by User id, converts Reimbursements to JSON, and prints it to response body.
+     * Gather {@link Reimbursement} from {@link ReimbursementService} by its id, converts Reimbursement to JSON, and prints it to response body.
      * <p>
-     *     (Wraps {@link #getByUserId()} to catch potential exceptions)
+     *     (Wraps {@link #getById()} to catch potential exceptions)
      * </p>
      */
     @Override
@@ -43,9 +41,9 @@ public class ReimbursementGetByUserIdController extends AbstractController {
         try {
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
-            getByUserId();
+            getById();
 
-        //if general exception thrown log exception and redirect to error page
+            //if general exception thrown log exception and redirect to error page
         } catch (Exception e) {
             LOGGER.error("An exception (" + e.getClass().getSimpleName() + ") was thrown in " + this.getClass().getSimpleName(), e);
             resp.setStatus(500);
@@ -55,19 +53,19 @@ public class ReimbursementGetByUserIdController extends AbstractController {
 
 
     /**
-     * Gather {@link Reimbursement Reimbursements} from {@link ReimbursementService} by User id, converts Reimbursements to JSON, and prints it to response body.
+     * Gather {@link Reimbursement} from {@link ReimbursementService} by its id, converts Reimbursement to JSON, and prints it to response body.
      * @throws IOException thrown by {@link HttpServletResponse#getWriter()}
      */
-    private void getByUserId() throws IOException {
+    private void getById() throws IOException {
         try {
 
             //parsing id to integer and gathering all Reimbursements by id
-            int userId = Integer.parseInt(req.getParameter("id"));
-            List<Reimbursement> requestedReimbursements = new ReimbursementService().getReimbursementsByUserID(userId);
+            int id = Integer.parseInt(req.getParameter("id"));
+            Reimbursement requestedReimbursement = new ReimbursementService().getReimbursementByID(id);
 
             //converting to JSON and appending to response
             Gson gson = new Gson();
-            resp.getWriter().println(gson.toJson(requestedReimbursements));
+            resp.getWriter().println(gson.toJson(requestedReimbursement));
             resp.setStatus(200);
 
             //if no proper id was provided

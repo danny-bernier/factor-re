@@ -1,5 +1,7 @@
 import com.google.gson.Gson;
 import factor.re.model.Reimbursement;
+import factor.re.service.ReimbursementService;
+import factor.re.service.UserService;
 
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -39,6 +41,25 @@ public class DriverTest {
 //        System.out.println(r2);
         String s = "";
         System.out.println(Integer.parseInt(s));
+
+        //reimbur daos testing -----------------------------------------
+//        ReimbursementService reimbService = new ReimbursementService ();
+//        UserService us = new UserService ();
+//
+//        factor.re.model.User user = us.getUserById (6);
+//        List<factor.re.model.User> result = us.fetchAllUsers ();
+//        for(factor.re.model.User users: result) {
+//            System.out.println (users);
+//        }
+//        System.out.println();
+//
+//        us.delete (user);
+//
+//        System.out.println();
+//        List<factor.re.model.User> results = us.fetchAllUsers ();
+//        for(factor.re.model.User users: results) {
+//            System.out.println (users);
+//        }
     }
 }
 

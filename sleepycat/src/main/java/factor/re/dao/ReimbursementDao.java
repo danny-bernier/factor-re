@@ -1,19 +1,16 @@
 package factor.re.dao;
 
-import java.sql.*;
-import java.sql.Array;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+import factor.re.model.Reimbursement;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
+import org.apache.log4j.Logger;
 
 
 /**
@@ -24,25 +21,18 @@ import org.hibernate.query.Query;
  */
 public class ReimbursementDao implements GenericDao<Reimbursement> {
 	private static final Logger LOGGER = Logger.getLogger(ReimbursementDao.class);
-	
-	private Reimbursement objectConstructor(ResultSet rs) throws SQLException {
-		return new Reimbursement(rs.getInt(1), rs.getFloat(2), rs.getTimestamp(3), rs.getTimestamp(4),
-							rs.getString(5), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10));
-	}
 
-  
 	/**
 	 * Get a list of all reimbursements in the database
 	 * <p>
-	 *     This utilize the session.createQuery with HQL and pull from Reimbursement
+	 *     This utilize the {@link Session#createQuery(String)} with HQL and pull from Reimbursement
 	 * </p>
-	 * @return a list of reimbursements
-	 * {@Link ReimbursementService#fetchAllReimbursements()}
+	 * @return The list of reimbursements
 	 */
 	@Override
 	public List<Reimbursement> getList() {
 
-		List<Reimbursement> result = new ArrayList<Reimbursement>();
+		List<Reimbursement> result = new ArrayList<>();
 		Transaction transaction = null;
 
 		try(SessionFactory factory = new Configuration ().configure().buildSessionFactory();
@@ -61,45 +51,44 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 		return result;
 	}
 
-  
 	/**
 	 * Make an update to a reimbursement in the database
 	 * <p>
-	 *     This utilize the session.createQuery with HQL and change the resolver_id,status_id,resolved fields
-	 *     from the reimbursement with that reimb_id
+	 *     This utilize the {@link Session#createQuery(String)} with HQL and change the resolverId,statusId,resolved fields
+	 *     from the reimbursement with that reimbId
 	 * </p>
-	 * @param reimb_id,resolver_id,status_id{@Link ReimbursementService#updateReimbursement(int,int,int)}
+	 * @param reimbId The id associated with the reimbursement to be updated
+	 * @param resolverId The user id of the resolver
+	 * @param statusId The id of the reimbursement's new status
 	 */
-	public void update(int reimb_id, int resolver_id, int status_id){
+	public void update(int reimbId, int resolverId, int statusId){
 		Transaction transaction = null;
 
 		try(SessionFactory factory = new Configuration ().configure().buildSessionFactory();
-			Session session = factory.openSession();){
+			Session session = factory.openSession()){
 			transaction = session.beginTransaction ();
 
-			Query query=session.createQuery("update Reimbursement set status_id=:status_id , resolver=:resolver , resolved=:resolved where id=:id");
-			query.setParameter ("status_id",status_id);
-			query.setParameter ("resolver",resolver_id);
-			query.setParameter ("id",reimb_id);
+			Query query = session.createQuery("update Reimbursement set statusId=:statusId , resolver=:resolver , resolved=:resolved where id=:id");
+			query.setParameter ("statusId",statusId);
+			query.setParameter ("resolver",resolverId);
+			query.setParameter ("id",reimbId);
 			query.setParameter ("resolved", Timestamp.from (Instant.now ()));
 			int result = query.executeUpdate();
-			// TODO: Find a way to update the resolve time
-			LOGGER.debug ("Update have been made to "+reimb_id);
+			LOGGER.debug ("Update have been made to "+reimbId);
 			transaction.commit ();
 		} catch (Exception e){
 			LOGGER.error("An attempt to update failed.",e);
 			throw e;
 		}
-	};
-
+	}
   
 	/**
 	 * Get a single reimbursement with id in the database
 	 * <p>
-	 *     This utilize the session.createQuery with HQL and pull from Reimbursement with the exact id
+	 *     This utilize the {@link Session#createQuery(String)} with HQL and pull from Reimbursement with the exact id
 	 * </p>
-	 * @return a single reimbursement with that id
-	 * @param id {@Link ReimbursementService#getReimbursementByID(int)}
+	 * @return The reimbursement with that id
+	 * @param id The id of the reimbursement to be retrieved from the database
 	 */
 	@Override
 	public Reimbursement getById(int id) {
@@ -107,7 +96,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 		Transaction transaction = null;
 
 		try(SessionFactory factory = new Configuration ().configure().buildSessionFactory();
-			Session session = factory.openSession();){
+			Session session = factory.openSession()){
 			transaction = session.beginTransaction ();
 
 			result = session.createQuery("from Reimbursement where id=:id",
@@ -124,14 +113,13 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 		return result;
 	}
 
-  
 	/**
 	 * Get a list of reimbursements with userId in the database
 	 * <p>
-	 *     This utilize the session.createQuery with HQL and pull from Reimbursement with related to that userId
+	 *     This utilize the {@link Session#createQuery(String)} with HQL and pull from Reimbursement with related to that userId
 	 * </p>
-	 * @return a list of reimbursements with that userId
-	 * @param id {@Link ReimbursementService#getReimbursementsByUserID(int)}
+	 * @return The list of reimbursements with that userId
+	 * @param id The id of the user associated with the reimbursement to be retrieved from the database
 	 */
 	@Override
 	public List<Reimbursement> getByUserId(int id) {
@@ -156,18 +144,22 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 		return result;
 	}
 
+	/**
+	 * Not Supported
+	 * @param username The username of the user associated with the reimbursement to be added to the database
+	 * @return The reimbursement associated with the username
+	 */
 	@Override
 	public Reimbursement getByUsername(String username) {
 		throw new java.lang.UnsupportedOperationException("Not implemented");
 	}
 
-  
 	/**
 	 * Insert a single reimbursement into the database
 	 * <p>
-	 *     This utilize the session.persist to insert the reimbursement into the database
+	 *     This utilize the {@link Session#persist(Object)} to insert the reimbursement into the database
 	 * </p>
-	 * @param reimbursement {@Link ReimbursementService#insert(Reimbursement)}
+	 * @param reimbursement The reimbursement to be added to the database
 	 */
 	@Override
 	public void insert(Reimbursement reimbursement) {
@@ -189,13 +181,12 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 		}
 	}
 
-  
 	/**
 	 * Delete a single reimbursement from the database
 	 * <p>
-	 *     This utilize the session.delete to delete the reimbursement from the database
+	 *     This utilize the {@link Session#delete(Object)} to delete the reimbursement from the database
 	 * </p>
-	 * @param reimbursement {@Link ReimbursementService#delete(Reimbursement)}
+	 * @param reimbursement The reimbursement to be deleted from the database
 	 */
 	@Override
 	public void delete(Reimbursement reimbursement) {
@@ -216,5 +207,4 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 //			e.printStackTrace ();
 		}
 	}
-
 }
