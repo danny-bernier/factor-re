@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Daniel Bernier
  * Abstract controller to define basic outline of all other Controllers
  * <p>
- *     Extended by {@link FrontController}, {@link UserController}, {@link ReimbursementController}
+ *     Controllers are intended to perform some operation based on HTTP request and mutate HTTP response
  * </p>
  */
 public abstract class AbstractController {
@@ -19,9 +19,9 @@ public abstract class AbstractController {
 
     /**
      * Simple constructor initializes context, request, and response
-     * @param req HttpServletRequest associated with HTTP request
-     * @param resp HttpServletResponse associated with HTTP request
-     * @param context ServletContext associated with HTTP request
+     * @param req {@link HttpServletRequest Request} associated with HTTP request
+     * @param resp {@link HttpServletResponse Response} associated with HTTP request
+     * @param context {@link ServletContext Context} associated with HTTP request
      */
     protected AbstractController(HttpServletRequest req, HttpServletResponse resp, ServletContext context){
         this.context = context;
@@ -30,8 +30,7 @@ public abstract class AbstractController {
     }
 
     /**
-     * Process the specified request
-     * @param request The request to be processed
+     * Handles the request, performing whatever operations that entails
      */
-    public abstract void process(String request);
+    public abstract void handle();
 }

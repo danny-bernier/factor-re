@@ -15,23 +15,13 @@
     </context-param>
 
     <servlet>
-        <servlet-name>UserServlet</servlet-name>
-        <servlet-class>factor.re.web.servlet.UserServlet</servlet-class>
-    </servlet>
-
-    <servlet>
-        <servlet-name>ReimbursementServlet</servlet-name>
-        <servlet-class>factor.re.web.servlet.ReimbursementServlet</servlet-class>
+        <servlet-name>HandlerServlet</servlet-name>
+        <servlet-class>factor.re.web.servlet.HandlerServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>UserServlet</servlet-name>
-        <url-pattern>/user</url-pattern>
-    </servlet-mapping>
-
-    <servlet-mapping>
-        <servlet-name>ReimbursementServlet</servlet-name>
-        <url-pattern>/reimbursement</url-pattern>
+        <servlet-name>HandlerServlet</servlet-name>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
 
     <error-page>

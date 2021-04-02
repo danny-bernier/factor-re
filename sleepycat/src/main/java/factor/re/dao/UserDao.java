@@ -62,6 +62,7 @@ public class UserDao implements GenericDao <User> {
 //			e.printStackTrace();
 //			LOGGER.error("An attempt to get info about user ID " + id + " from the database failed.");
 //		}
+		u = new User(id, "bobbob", "password", "bob", "lastName", "bb@gmail.co.uk", 0);
 		return u;
 	}
 	

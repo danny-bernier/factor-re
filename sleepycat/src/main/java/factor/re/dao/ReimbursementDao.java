@@ -50,6 +50,10 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 //			e.printStackTrace();
 //			LOGGER.error("An attempt to get all reimbursements failed.");
 //		}
+		l.add(new Reimbursement(13, 123f, Timestamp.from(Instant.now()), Timestamp.from(Instant.now()), "yoyoyoyoyo", 7,
+				13, 0, 14));
+		l.add(new Reimbursement(3, 16.898f, Timestamp.from(Instant.now()), Timestamp.from(Instant.now()), "FUUUUUUU", 7,
+				13, 1, 6));
 		return l;
 	}
 
