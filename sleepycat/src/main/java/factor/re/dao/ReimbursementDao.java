@@ -25,7 +25,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 	/**
 	 * Get a list of all reimbursements in the database
 	 * <p>
-	 *     This utilize the session.createQuery with HQL and pull from Reimbursement
+	 *     This utilize the {@link Session#createQuery(String)} with HQL and pull from Reimbursement
 	 * </p>
 	 * @return The list of reimbursements
 	 */
@@ -54,7 +54,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 	/**
 	 * Make an update to a reimbursement in the database
 	 * <p>
-	 *     This utilize the session.createQuery with HQL and change the resolverId,statusId,resolved fields
+	 *     This utilize the {@link Session#createQuery(String)} with HQL and change the resolverId,statusId,resolved fields
 	 *     from the reimbursement with that reimbId
 	 * </p>
 	 * @param reimbId The id associated with the reimbursement to be updated
@@ -85,7 +85,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 	/**
 	 * Get a single reimbursement with id in the database
 	 * <p>
-	 *     This utilize the session.createQuery with HQL and pull from Reimbursement with the exact id
+	 *     This utilize the {@link Session#createQuery(String)} with HQL and pull from Reimbursement with the exact id
 	 * </p>
 	 * @return The reimbursement with that id
 	 * @param id The id of the reimbursement to be retrieved from the database
@@ -116,7 +116,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 	/**
 	 * Get a list of reimbursements with userId in the database
 	 * <p>
-	 *     This utilize the session.createQuery with HQL and pull from Reimbursement with related to that userId
+	 *     This utilize the {@link Session#createQuery(String)} with HQL and pull from Reimbursement with related to that userId
 	 * </p>
 	 * @return The list of reimbursements with that userId
 	 * @param id The id of the user associated with the reimbursement to be retrieved from the database
@@ -157,7 +157,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 	/**
 	 * Insert a single reimbursement into the database
 	 * <p>
-	 *     This utilize the session.persist to insert the reimbursement into the database
+	 *     This utilize the {@link Session#persist(Object)} to insert the reimbursement into the database
 	 * </p>
 	 * @param reimbursement The reimbursement to be added to the database
 	 */
@@ -184,7 +184,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 	/**
 	 * Delete a single reimbursement from the database
 	 * <p>
-	 *     This utilize the session.delete to delete the reimbursement from the database
+	 *     This utilize the {@link Session#delete(Object)} to delete the reimbursement from the database
 	 * </p>
 	 * @param reimbursement The reimbursement to be deleted from the database
 	 */

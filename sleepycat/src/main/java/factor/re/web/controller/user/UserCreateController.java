@@ -1,6 +1,5 @@
 package factor.re.web.controller.user;
 
-import factor.re.service.ReimbursementService;
 import factor.re.service.UserService;
 import factor.re.web.controller.AbstractController;
 import org.apache.log4j.Logger;

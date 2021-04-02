@@ -14,6 +14,10 @@ import java.lang.reflect.Type;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * @author Daniel Bernier
+ * Controller to handle get user by login information request
+ */
 public class UserGetByLoginController extends AbstractController {
 
     private static final Logger LOGGER = Logger.getLogger(UserGetByLoginController.class);

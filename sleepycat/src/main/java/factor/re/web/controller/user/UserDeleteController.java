@@ -1,6 +1,5 @@
 package factor.re.web.controller.user;
 
-import com.google.gson.Gson;
 import factor.re.model.User;
 import factor.re.service.UserService;
 import factor.re.web.controller.AbstractController;
@@ -10,6 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * @author Daniel Bernier
+ * Controller to handle delete user request
+ */
 public class UserDeleteController extends AbstractController {
 
     private static final Logger LOGGER = Logger.getLogger(UserDeleteController.class);

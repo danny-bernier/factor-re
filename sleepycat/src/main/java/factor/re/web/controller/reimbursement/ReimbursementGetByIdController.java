@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * @author Daniel Bernier
+ * Controller to handle get reimbursements by id request
+ */
 public class ReimbursementGetByIdController extends AbstractController {
 
     private static final Logger LOGGER = Logger.getLogger(ReimbursementGetByIdController.class);
