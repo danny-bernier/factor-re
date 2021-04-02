@@ -28,7 +28,7 @@ public class ReimbursementService {
 	 * @param json
 	 * {@Link ReimbursementCreateController#handle()} create a reimbursement from JSON with {@Link ReimbursementDao#delete(Reimbursement) to JSON}
 	 */
-	public void createReimbursement(String json) {
+	public boolean createReimbursement(String json) {
 		try {
 			Reimbursement r = new ObjectMapper().readValue(json, Reimbursement.class);
 			LOGGER.debug("JSON from the client was successfully parsed.");
@@ -84,11 +84,16 @@ public class ReimbursementService {
 	 * <p>
 	 *     This call the update(int,int,int) from the reimbursementDao
 	 * </p>
-	 * @param reimb_id,resolver_id,status_id
+	 * @param reimbId,resolverId,statusId
 	 * {@Link ReimbursementUpdateController#handle()} issue and update on a reimbursement and is done in{@Link ReimbursementService#updateReimbursement(int,int,int)}
 	 */
-	public void updateReimbursement(int reimb_id, int resolver_id, int status_id) {
-		rd.update(reimb_id,resolver_id,status_id);
+	public boolean updateReimbursement(int reimbId, int resolverId, int statusId) {
+		try {
+			rd.update(reimbId,resolverId,statusId);
+			return true;
+		} catch (Exception ignored){
+			return false;
+		}
 	}
 
 	/**
@@ -113,6 +118,5 @@ public class ReimbursementService {
 	 */
 	public Reimbursement getReimbursementByID(int id) {
 		return rd.getById (id);
-
 	}
 }

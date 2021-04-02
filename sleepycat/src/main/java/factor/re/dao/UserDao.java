@@ -1,13 +1,7 @@
 package factor.re.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import factor.re.model.Reimbursement;
 import factor.re.model.User;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -24,12 +18,6 @@ import org.hibernate.cfg.Configuration;
  */
 public class UserDao implements GenericDao <User> {
 	private static final Logger LOGGER = Logger.getLogger(UserDao.class);
-
-	private User objectConstructor(ResultSet rs) throws SQLException {
-		return new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-						rs.getString(6), rs.getInt(7));
-	}
-
   
     /**
      * Get a list of all users in the database
@@ -59,7 +47,6 @@ public class UserDao implements GenericDao <User> {
         }
         return result;
 	}
-
   
     /**
      * Get a single user with user id in the database
@@ -97,7 +84,6 @@ public class UserDao implements GenericDao <User> {
 		throw new java.lang.UnsupportedOperationException("Not implemented");
 	}
 
-  
     /**
      * Get a single user with username in the database
      * <p>
@@ -129,7 +115,6 @@ public class UserDao implements GenericDao <User> {
         return result;
 	}
 
-  
     /**
      * Insert a single user into the database
      * <p>
@@ -158,7 +143,6 @@ public class UserDao implements GenericDao <User> {
         }
 
 	}
-
   
     /**
      * Delete a single user from the database
@@ -186,6 +170,5 @@ public class UserDao implements GenericDao <User> {
 //            throw e;
 			e.printStackTrace ();
         }
-
 	}
 }
