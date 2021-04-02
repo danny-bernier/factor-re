@@ -3,10 +3,11 @@ package factor.re.service;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
-
+import com.google.gson.Gson;
 import org.apache.log4j.Logger;
-
 import factor.re.dao.UserDao;
 import factor.re.model.User;
 
@@ -102,11 +103,20 @@ public class UserService {
 	 * <p>
 	 *     This call the insert(User) from UserDao
 	 * </p>
-	 * @param u
+	 * @param json
 	 * {@Link UserCreateController#handle()} covert the user created from {@Link UserDao#insert(User) to JSON}
 	 */
-	public void insert(User u){
-		ud.insert (u);
+	public boolean insert(String json){
+		try {
+			User u = new Gson().fromJson(json, User.class);
+			LOGGER.debug("JSON from the client was successfully parsed.");
+			ud.insert(u);
+			return true;
+		} catch (Exception e) {
+			LOGGER.error("Something occurred during JSON parsing for a new reimbursement. Is the JSON malformed?", e);
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	/**

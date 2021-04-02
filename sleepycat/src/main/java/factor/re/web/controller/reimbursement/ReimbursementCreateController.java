@@ -46,7 +46,8 @@ public class ReimbursementCreateController extends AbstractController {
             } else {
                 LOGGER.debug("Failed to add a new Reimbursement in " + this.getClass().getSimpleName());
                 resp.setStatus(400);
-                resp.getWriter().println("<p>Could not create Reimbursement, ensure your JSON is formatted correctly</p>");
+                resp.getWriter().println("<h1>Could not create Reimbursement, ensure your JSON is formatted correctly example:</h1>");
+                resp.getWriter().println("<p>{amount=123.00, description=\"this is a description\", author=5, resolver=0, status_id=0, type_id=1}</p>");
             }
 
         //if general exception thrown log exception and redirect to error page
