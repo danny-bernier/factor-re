@@ -22,10 +22,9 @@ public class UserDao implements GenericDao <User> {
     /**
      * Get a list of all users in the database
      * <p>
-     *     This utilize the session.createQuery with HQL and pull from User
+     *     This utilize the {@link Session#createQuery(String)} with HQL and pull from User
      * </p>
-     * @return a list of users
-     * {@Link UserService#fetchAllUsers()}
+     * @return The list of all users
      */
 	@Override
 	public List<User> getList() {
@@ -51,10 +50,10 @@ public class UserDao implements GenericDao <User> {
     /**
      * Get a single user with user id in the database
      * <p>
-     *     This utilize the session.createQuery with HQL and pull from User with the exact id
+     *     This utilize the {@link Session#createQuery(String)} with HQL and pull from User with the exact id
      * </p>
-     * @return a single user with that id
-     * @param id {@Link UserService#getUserById(int)}
+     * @return The user with that id
+     * @param id The id of the user to be retrieved from the database
      */
 	@Override
 	public User getById(int id) {
@@ -87,10 +86,10 @@ public class UserDao implements GenericDao <User> {
     /**
      * Get a single user with username in the database
      * <p>
-     *     This utilize the session.createQuery with HQL and pull from User with the exact username
+     *     This utilize the {@link Session#createQuery(String)} with HQL and pull from User with the exact username
      * </p>
      * @return a single user with that username
-     * @param username {@Link UserService#getUserByUsername(String),#getUserByLogin(String,String)}
+     * @param username The username of the user to be retrieved from the database
      */
 	@Override
 	public User getByUsername(String username) {
@@ -118,9 +117,9 @@ public class UserDao implements GenericDao <User> {
     /**
      * Insert a single user into the database
      * <p>
-     *     This utilize the session.persist to insert the user into the database
+     *     This utilize the {@link Session#persist(Object)} to insert the user into the database
      * </p>
-     * @param t {@Link UserService#insert(User)}
+     * @param t The user to be added to the database
      */
 	@Override
 	public void insert(User t) {
@@ -147,9 +146,9 @@ public class UserDao implements GenericDao <User> {
     /**
      * Delete a single user from the database
      * <p>
-     *     This utilize the session.delete to delete the user from the database
+     *     This utilize the {@link Session#delete(Object)} to delete the user from the database
      * </p>
-     * @param t {@Link UserService#delete(User)}
+     * @param t The user to be deleted from the database
      */
 	@Override
 	public void delete(User t) {

@@ -1,7 +1,5 @@
 package factor.re.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -29,7 +27,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 	 * <p>
 	 *     This utilize the session.createQuery with HQL and pull from Reimbursement
 	 * </p>
-	 * @return a list of reimbursements
+	 * @return The list of reimbursements
 	 */
 	@Override
 	public List<Reimbursement> getList() {
@@ -59,9 +57,9 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 	 *     This utilize the session.createQuery with HQL and change the resolverId,statusId,resolved fields
 	 *     from the reimbursement with that reimbId
 	 * </p>
-	 * @param reimbId {@link factor.re.service.ReimbursementService#updateReimbursement(int,int,int)}
-	 * @param resolverId {@link factor.re.service.ReimbursementService#updateReimbursement(int,int,int)}
-	 * @param statusId {@link factor.re.service.ReimbursementService#updateReimbursement(int,int,int)}
+	 * @param reimbId The id associated with the reimbursement to be updated
+	 * @param resolverId The user id of the resolver
+	 * @param statusId The id of the reimbursement's new status
 	 */
 	public void update(int reimbId, int resolverId, int statusId){
 		Transaction transaction = null;
@@ -76,7 +74,6 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 			query.setParameter ("id",reimbId);
 			query.setParameter ("resolved", Timestamp.from (Instant.now ()));
 			int result = query.executeUpdate();
-			// TODO: Find a way to update the resolve time
 			LOGGER.debug ("Update have been made to "+reimbId);
 			transaction.commit ();
 		} catch (Exception e){
@@ -90,8 +87,8 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 	 * <p>
 	 *     This utilize the session.createQuery with HQL and pull from Reimbursement with the exact id
 	 * </p>
-	 * @return a single reimbursement with that id
-	 * @param id {@link factor.re.service.ReimbursementService#getReimbursementByID(int)}
+	 * @return The reimbursement with that id
+	 * @param id The id of the reimbursement to be retrieved from the database
 	 */
 	@Override
 	public Reimbursement getById(int id) {
@@ -121,8 +118,8 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 	 * <p>
 	 *     This utilize the session.createQuery with HQL and pull from Reimbursement with related to that userId
 	 * </p>
-	 * @return a list of reimbursements with that userId
-	 * @param id {@link factor.re.service.ReimbursementService#getReimbursementsByUserID(int)}
+	 * @return The list of reimbursements with that userId
+	 * @param id The id of the user associated with the reimbursement to be retrieved from the database
 	 */
 	@Override
 	public List<Reimbursement> getByUserId(int id) {
@@ -147,6 +144,11 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 		return result;
 	}
 
+	/**
+	 * Not Supported
+	 * @param username The username of the user associated with the reimbursement to be added to the database
+	 * @return The reimbursement associated with the username
+	 */
 	@Override
 	public Reimbursement getByUsername(String username) {
 		throw new java.lang.UnsupportedOperationException("Not implemented");
@@ -157,7 +159,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 	 * <p>
 	 *     This utilize the session.persist to insert the reimbursement into the database
 	 * </p>
-	 * @param reimbursement {@link factor.re.service.ReimbursementService#insertReimbursement(Reimbursement)}
+	 * @param reimbursement The reimbursement to be added to the database
 	 */
 	@Override
 	public void insert(Reimbursement reimbursement) {
@@ -184,7 +186,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 	 * <p>
 	 *     This utilize the session.delete to delete the reimbursement from the database
 	 * </p>
-	 * @param reimbursement {@link factor.re.service.ReimbursementService#deleteReimbursement(Reimbursement)}
+	 * @param reimbursement The reimbursement to be deleted from the database
 	 */
 	@Override
 	public void delete(Reimbursement reimbursement) {

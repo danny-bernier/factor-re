@@ -22,11 +22,8 @@ public class ReimbursementService {
 
 	/**
 	 * Insert a single reimbursement into the database
-	 * <p>
-	 *     This call the insert(Reimbursement) into ReimbursementDao
-	 * </p>
-	 * @param json
-	 * {@Link ReimbursementCreateController#handle()} create a reimbursement from JSON with {@Link ReimbursementDao#delete(Reimbursement) to JSON}
+	 *
+	 * @param json The JSON representation of the reimbursement to be created
 	 */
 	public boolean createReimbursement(String json) {
 		try {
@@ -44,11 +41,8 @@ public class ReimbursementService {
 
 	/**
 	 * Get a list of all reimbursements in the database
-	 * <p>
-	 *     This call the getList() from ReimbursementDao
-	 * </p>
-	 * @return a list of reimbursements
-	 * {@Link ReimbursementGetAllController#handle()} request a list of reimbursements and fetch from {@Link ReimbursementDao#getList()}
+	 *
+	 * @return The list of all reimbursements
 	 */
 	public List<Reimbursement> fetchAllReimbursements() {
 		return rd.getList();
@@ -56,11 +50,8 @@ public class ReimbursementService {
 
 	/**
 	 * Delete a single reimbursement from the database
-	 * <p>
-	 *     This call the delete(Reimbursement) from ReimbursementDao
-	 * </p>
-	 * @param r
-	 * {@Link ReimbursementDeleteController#handle()} delete a reimbursement with {@Link ReimbursementDao#delete(Reimbursement)}
+	 *
+	 * @param r The reimbursement to be deleted
 	 */
 	public void deleteReimbursement(Reimbursement r){
 		rd.delete (r);
@@ -68,12 +59,9 @@ public class ReimbursementService {
 
 	/**
 	 * Get a list of reimbursements with userId in the database
-	 * <p>
-	 *     This call the getByUserId(int) from ReimbursementDao
-	 * </p>
-	 * @return a list of reimbursements with that userId
-	 * @param id
-	 * {@Link ReimbursementGetByUserIdController#handle()} request a list of reimbursements with that userId and fetch from {@Link ReimbursementDao#getByUserId(int)}
+	 *
+	 * @return The list of reimbursements with that userId
+	 * @param id The user id associated with reimbursements to be retrieved
 	 */
 	public List<Reimbursement> getReimbursementsByUserID(int id) {
 		return rd.getByUserId(id);
@@ -81,11 +69,10 @@ public class ReimbursementService {
 
 	/**
 	 * Make an update to a reimbursement in the database
-	 * <p>
-	 *     This call the update(int,int,int) from the reimbursementDao
-	 * </p>
-	 * @param reimbId,resolverId,statusId
-	 * {@Link ReimbursementUpdateController#handle()} issue and update on a reimbursement and is done in{@Link ReimbursementService#updateReimbursement(int,int,int)}
+	 *
+	 * @param reimbId The id of the reimbursement to be updated
+	 * @param resolverId The user id of the resolver of the reimbursement
+	 * @param statusId The new status of the reimbursement
 	 */
 	public boolean updateReimbursement(int reimbId, int resolverId, int statusId) {
 		try {
@@ -98,11 +85,8 @@ public class ReimbursementService {
 
 	/**
 	 * Insert a single reimbursement into the database
-	 * <p>
-	 *     This call the insert(Reimbursement) from ReimbursementDao
-	 * </p>
-	 * @param r
-	 * {@Link ReimbursementCreateController#handle()} convert the reimbursement created from {@Link ReimbursementDao#delete(Reimbursement) to JSON}
+	 *
+	 * @param r The reimbursement to be inserted
 	 */
 	public void insertReimbursement(Reimbursement r){
 		rd.insert (r);
@@ -110,11 +94,9 @@ public class ReimbursementService {
 
 	/**
 	 * Get a single reimbursement with id in the database
-	 * <p>
-	 *     This call the getById(int) from ReimbursementDao
-	 * </p>
+	 *
 	 * @return a single reimbursement with that id
-	 * @param id {@Link ReimbursementByIdController#handle() request a reimbursement and is done in}{@Link ReimbursementService#getReimbursementByID(int)}
+	 * @param id The id of the reimbursement to be retrieved
 	 */
 	public Reimbursement getReimbursementByID(int id) {
 		return rd.getById (id);

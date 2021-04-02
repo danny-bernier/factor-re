@@ -3,8 +3,6 @@ package factor.re.service;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.List;
 import com.google.gson.Gson;
 import org.apache.log4j.Logger;
@@ -25,11 +23,8 @@ public class UserService {
 
 	/**
 	 * Get a list of all users in the database
-	 * <p>
-	 *     This call the getList() from UserDao
-	 * </p>
-	 * @return a list of users
-	 * {@Link UserGetAllController#handle()} request a list of users and fetch from {@Link UserDao#getList()}
+	 *
+	 * @return The list of all users
 	 */
 	public List<User> fetchAllUsers() {
 		return ud.getList();
@@ -37,12 +32,9 @@ public class UserService {
 
 	/**
 	 * Get a single user with user id in the database
-	 * <p>
-	 *     This call the getById(int) from UserDao
-	 * </p>
+	 *
 	 * @return a single user with that id
-	 * @param id
-	 * {@Link UserGetByIdController#handle()} request a user with that id and fetch from {@Link UserDao#getById(int)}
+	 * @param id The user id of the user to be retrieved
 	 */
 	public User getUserById(int id) {
 		return ud.getById(id);
@@ -50,12 +42,9 @@ public class UserService {
 
 	/**
 	 * Get a single user with username in the database
-	 * <p>
-	 *     This call the getByUsername(String) from UserDao
-	 * </p>
-	 * @return a single user with that username
-	 * @param username
-	 * {@Link UserGetByUsernameController#handle()} request a user with that username and fetch from {@Link UserDao#getByUsername(String)}
+	 *
+	 * @return The user with that username
+	 * @param username The username of the user to be retrieved
 	 */
 	public User getUserByUsername(String username) {
 		User u = ud.getByUsername(username);
@@ -67,6 +56,15 @@ public class UserService {
 		return null;
 	}
 
+	/**
+	 * Retrieves User from {@link UserDao#getByUsername(String)}, and confirms hashed passwords match
+	 * <p>
+	 *     If password hashes match, this will return the User. If password hashes do not match, this will return null.
+	 * </p>
+	 * @param user The username of the user to be retrieved
+	 * @param pass The password of the user to be retrieved
+	 * @return The retrieved user
+	 */
 	public User getUserByLogin(String user, String pass) {
 		User u = ud.getByUsername(user);
 
@@ -100,11 +98,8 @@ public class UserService {
 
 	/**
 	 * Insert a single user into the database
-	 * <p>
-	 *     This call the insert(User) from UserDao
-	 * </p>
-	 * @param json
-	 * {@Link UserCreateController#handle()} covert the user created from {@Link UserDao#insert(User) to JSON}
+	 *
+	 * @param json The JSON representation of the user to be created
 	 */
 	public boolean insert(String json){
 		try {
@@ -121,11 +116,8 @@ public class UserService {
 
 	/**
 	 * Delete a single user from the database
-	 * <p>
-	 *     This call the delete(User) from UserDao
-	 * </p>
-	 * @param u
-	 * {@Link UserDeleteController#handle()} delete a user with {@Link UserDao#delete(User)}
+	 *
+	 * @param u The user to be deleted
 	 */
 	public void delete(User u){
 		ud.delete (u);
