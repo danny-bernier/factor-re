@@ -1,12 +1,25 @@
 package factor.re.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "ers_users")
 public class User {
+	@GeneratedValue
+	@Id
+	@Column(name = "ers_user_id")
 	private int user_id;
+	@Column(name = "ers_username")
 	private String username;
+	@Column(name = "ers_password")
 	private String password;
+	@Column(name = "ers_firstname")
 	private String firstname;
+	@Column(name = "ers_lastname")
 	private String lastname;
+	@Column(name = "ers_email")
 	private String email;
+	@Column(name = "ers_role_id")
 	private int role_id;
 	
 	public User() {
@@ -16,6 +29,15 @@ public class User {
 	public User(int user_id, String username, String password, String firstname, String lastname, String email,
 			int role_id) {
 		this.user_id = user_id;
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.role_id = role_id;
+	}
+
+	public User(String username, String password, String firstname, String lastname, String email, int role_id) {
 		this.username = username;
 		this.password = password;
 		this.firstname = firstname;

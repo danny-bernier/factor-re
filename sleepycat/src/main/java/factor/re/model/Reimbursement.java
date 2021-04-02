@@ -1,16 +1,39 @@
 package factor.re.model;
 
-import java.sql.Timestamp;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import javax.persistence.*;
+import java.sql.Timestamp;
+@NamedQueries({@NamedQuery(name = "getAllReimbursement", query = "from Reimbursement"),
+//		@NamedQuery(name = "getAllHumansWhereId", query = "from Human where humanId = :id"),
+//		@NamedQuery(name = "getAllHumansByNoseHoles", query = "from Human as human " +
+//				"where nose.numberOfHoles = :holes")
+				})
+@Entity
+@Table(name = "ers_reimbursement")
 public class Reimbursement {
+	@GeneratedValue
+	@Id
+	@Column(name = "reimb_id")
 	private int id;
+	@Column(name = "reimb_amount")
 	private float amount;
+	@Column(name = "reimb_submitted")
+	@CreationTimestamp
 	private Timestamp submitted;
+	@Column(name = "reimb_resolved")
+	@UpdateTimestamp
 	private Timestamp resolved;
+	@Column(name = "reimb_description")
 	private String description;
+	@Column(name = "reimb_author")
 	private int author;
+	@Column(name = "reimb_resolver")
 	private int resolver;
+	@Column(name = "reimb_status_id")
 	private int status_id;
+	@Column(name = "reimb_type_id")
 	private int type_id;
 	
 	public Reimbursement() {
@@ -20,6 +43,17 @@ public class Reimbursement {
 	public Reimbursement(int id, float amount, Timestamp submitted, Timestamp resolved, String description, int author,
 			int resolver, int status_id, int type_id) {
 		this.id = id;
+		this.amount = amount;
+		this.submitted = submitted;
+		this.resolved = resolved;
+		this.description = description;
+		this.author = author;
+		this.resolver = resolver;
+		this.status_id = status_id;
+		this.type_id = type_id;
+	}
+
+	public Reimbursement(float amount, Timestamp submitted, Timestamp resolved, String description, int author, int resolver, int status_id, int type_id) {
 		this.amount = amount;
 		this.submitted = submitted;
 		this.resolved = resolved;
