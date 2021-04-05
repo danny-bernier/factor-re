@@ -1,8 +1,8 @@
 
-X	java:S125X"<This block of commented-out lines of code should be removed.(½»È8õ¹¥‰/
-9
-java:S1643~"Use a StringBuilder instead.(¹îùŸ8…Ï¥‰/
 W
 java:S1141s"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8…Ï¥‰/
+9
+java:S1643~"Use a StringBuilder instead.(¹îùŸ8…Ï¥‰/
+X	java:S125X"<This block of commented-out lines of code should be removed.(½»È8õ¹¥‰/
 9
 java:S1643T"Use a StringBuilder instead.(¹îùŸ8õ¹¥‰/

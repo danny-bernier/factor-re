@@ -8,7 +8,7 @@ public class User {
 	@GeneratedValue
 	@Id
 	@Column(name = "ers_user_id")
-	private int user_id;
+	private int userId;
 	@Column(name = "ers_username")
 	private String username;
 	@Column(name = "ers_password")
@@ -20,38 +20,38 @@ public class User {
 	@Column(name = "ers_email")
 	private String email;
 	@Column(name = "ers_role_id")
-	private int role_id;
+	private int roleId;
 	
 	public User() {
 		//No-arg constructor
 	}
 	
-	public User(int user_id, String username, String password, String firstname, String lastname, String email,
-			int role_id) {
-		this.user_id = user_id;
+	public User(int userId, String username, String password, String firstname, String lastname, String email,
+				int roleId) {
+		this.userId = userId;
 		this.username = username;
 		this.password = password;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
-		this.role_id = role_id;
+		this.roleId = roleId;
 	}
 
-	public User(String username, String password, String firstname, String lastname, String email, int role_id) {
+	public User(String username, String password, String firstname, String lastname, String email, int roleId) {
 		this.username = username;
 		this.password = password;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
-		this.role_id = role_id;
+		this.roleId = roleId;
 	}
 
-	public int getUser_id() {
-		return user_id;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public String getUsername() {
@@ -94,12 +94,12 @@ public class User {
 		this.email = email;
 	}
 
-	public int getRole_id() {
-		return role_id;
+	public int getRoleId() {
+		return roleId;
 	}
 
-	public void setRole_id(int role_id) {
-		this.role_id = role_id;
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
 	}
 
 	@Override
@@ -110,8 +110,8 @@ public class User {
 		result = prime * result + ((firstname == null) ? 0 : firstname.hashCode());
 		result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + role_id;
-		result = prime * result + user_id;
+		result = prime * result + roleId;
+		result = prime * result + userId;
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -145,9 +145,9 @@ public class User {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (role_id != other.role_id)
+		if (roleId != other.roleId)
 			return false;
-		if (user_id != other.user_id)
+		if (userId != other.userId)
 			return false;
 		if (username == null) {
 			if (other.username != null)
@@ -159,7 +159,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [user_id=" + user_id + ", username=" + username + ", password=" + password + ", firstname="
-				+ firstname + ", lastname=" + lastname + ", email=" + email + ", role_id=" + role_id + "]";
+		return "User [user_id=" + userId + ", username=" + username + ", password=" + password + ", firstname="
+				+ firstname + ", lastname=" + lastname + ", email=" + email + ", role_id=" + roleId + "]";
 	}
 }

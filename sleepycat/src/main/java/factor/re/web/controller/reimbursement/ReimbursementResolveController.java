@@ -22,6 +22,7 @@ public class ReimbursementResolveController extends AbstractController {
 
     private static final Logger LOGGER = Logger.getLogger(ReimbursementResolveController.class);
 
+
     /**
      * Simple constructor initializes context, request, and response
      *
@@ -82,7 +83,6 @@ public class ReimbursementResolveController extends AbstractController {
             } else {
                 LOGGER.debug("Failed to update resolver in " + this.getClass().getSimpleName());
                 resp.setStatus(400);
-                resp.getWriter().println("null");
             }
 
         //if id, status, or resolver could not be parsed
