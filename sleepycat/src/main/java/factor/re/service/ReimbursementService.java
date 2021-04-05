@@ -29,7 +29,6 @@ public class ReimbursementService {
 		try {
 			Reimbursement r = new Gson().fromJson(json, Reimbursement.class);
 			LOGGER.debug("JSON from the client was successfully parsed.");
-			r.setSubmitted(Timestamp.from(Instant.now()));
 			rd.insert(r);
 			return true;
 		} catch (Exception e) {
