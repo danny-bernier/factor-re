@@ -1,19 +1,12 @@
 package factor.re.web.controller.reimbursement;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import factor.re.model.Reimbursement;
 import factor.re.service.ReimbursementService;
-import factor.re.service.UserService;
 import factor.re.web.controller.AbstractController;
 import org.apache.log4j.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.lang.reflect.Type;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -46,18 +39,6 @@ public class ReimbursementCreateController extends AbstractController {
 
             //getting body JSON from request
             String body = req.getReader().lines().collect(Collectors.joining());
-
-            //gathering required header information
-            Type mapJSONType = new TypeToken<Map<String, String>>() {}.getType();
-            Gson gson = new Gson();
-            Map<String, String> jsonMap = gson.fromJson(body, mapJSONType);
-
-            //setting author
-            int author = Integer.parseInt(jsonMap.get("author"));
-            Pattern authorPattern = Pattern.compile("\"author\":(\\d+)");
-
-            Matcher m = authorPattern.matcher(body);
-            body = m.replaceFirst(gson.toJson(new UserService().getUserById(author)));
 
             //trying to create new Reimbursement
             if (new ReimbursementService().createReimbursement(body)) {

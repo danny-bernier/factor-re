@@ -22,7 +22,6 @@ public class UserGetByLoginController extends AbstractController {
 
     private static final Logger LOGGER = Logger.getLogger(UserGetByLoginController.class);
 
-
     /**
      * Simple constructor initializes context, request, and response
      *
@@ -55,7 +54,6 @@ public class UserGetByLoginController extends AbstractController {
             req.getRequestDispatcher("/error.html");
         }
     }
-
 
     /**
      * Gather a {@link User} from {@link UserService} by user's username and password, converts User to JSON, and prints it to response body.

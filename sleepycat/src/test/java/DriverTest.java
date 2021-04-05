@@ -30,7 +30,7 @@ public class DriverTest {
 //        Matcher m = p.matcher(x);
 //        System.out.println(m.group(1));
 
-        //String incomingJSON = "{\"amount\":123.0,\"description\":\"yoyoyoyoyo\",\"author\":3,\"status_id\":1,\"type_id\":14}";
+//        String incomingJSON = "{\"amount\":123.0,\"description\":\"yoyoyoyoyo\",\"author\":7,\"status_id\":1,\"type_id\":14}";
 //
 //        Gson gson = new Gson();
 //        Reimbursement rs = new Reimbursement(1, 123f, Timestamp.from(Instant.now()), Timestamp.from(Instant.now()), "yoyoyoyoyo", 7,
@@ -39,26 +39,8 @@ public class DriverTest {
 //
 //        Reimbursement r2 = gson.fromJson(incomingJSON, Reimbursement.class);
 //        System.out.println(r2);
-//        String s = "";
-//        System.out.println(Integer.parseInt(s));
-
-        String incomingJSON = "{\"amount\":123.0,\"description\":\"yoyoyoyoyo\",\"author\":3,\"status_id\":1,\"type_id\":14}";
-//        Reimbursement r = new Gson().fromJson(incomingJSON, Reimbursement.class);
-//        System.out.println(r);
-
-        Pattern authorPattern = Pattern.compile("\"author\":(\\d+)");
-
-        Gson gson = new Gson();
-
-        Matcher m = authorPattern.matcher(incomingJSON);
-        incomingJSON = m.replaceFirst("{\"user_id\":7,\"username\":\"jimbo\",\"password\":\"3daea4d82cd5a356e0b51d61fde9a1b1\",\"firstname\":\"Jim\",\"lastname\":\"Hansen\",\"email\":\"cooldude@bing.gov\",\"role_id\":0}");
-
-//        String s = "{\"regular\":\"a\", \"sensitive\":\"b\"}";
-//        String key = "sensitive";
-//        String val = "****";
-//        System.out.println(s.replaceAll("(?<=\"" + key + "\":\")(\\w+)", val));
-
-        System.out.println(incomingJSON);
+        String s = "";
+        System.out.println(Integer.parseInt(s));
 
         //reimbur daos testing -----------------------------------------
 //        ReimbursementService reimbService = new ReimbursementService ();

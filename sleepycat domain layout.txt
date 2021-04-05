@@ -12,18 +12,18 @@
 	
 	/create
 	{
-	"username":"USERNAME_HERE",
-	"password":"PASSWORD_HERE",
-	"firstname":"FIRSTNAME_HERE",
-	"lastname":"LASTNAME_HERE",
-	"email":"EMAIL_HERE",
-	"role_id":INTEGER_HERE
+	"username"="USERNAME_HERE",
+	"password"="PASSWORD_HERE",
+	"firstname"="FIRSTNAME_HERE",
+	"lastname"="LASTNAME_HERE",
+	"email"="EMAIL_HERE",
+	"role_id"=INTEGER_HERE
 	}
 	
 	/login
 	{
-	"username":"USERNAME_HERE",
-	"password":"PASSWORD_HERE"
+	"username"="",
+	"password"=""
 	}
 	
 ----------REIMBURSEMENT-----------
@@ -41,17 +41,17 @@
 	
 	/create
 	{
-	"amount":123.00, 
-	"description":"this is a description", 
-	"author":5, 
-	"resolver":0, 
-	"status_id":0, 
-	"type_id":1
+	"amount"=123.00, 
+	"description"="this is a description", 
+	"author"=5, 
+	"resolver"=0, 
+	"status_id"=0, 
+	"type_id"=1
 	}
 	
 	/resolve
 	{
-	"id":INTEGER_HERE,
-	"status":INTEGER_HERE,
-	"resolver":INTEGER_HERE
+	"id"=INTEGER_HERE,
+	"status"=INTEGER_HERE,
+	"resolver"=INTEGER_HERE
 	}

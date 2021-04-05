@@ -1,26 +1,24 @@
 
-u	java:S116"TRename this field "status_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ùÁ¨üÿÿÿÿ8Òå“¤‰/
-h
-java:S1128"FRemove this unused import 'org.hibernate.annotations.UpdateTimestamp'.(Ñµ¬Ûúÿÿÿÿ8Å¨¯ÿ‰/
-c	java:S100z"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷Óî“
+b	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡Íè
+\	java:S1074"AConstructor has 8 parameters, which is greater than 7 authorized.(²ñÌ
+8Òå“¤‰/
+b	java:S107'"AConstructor has 9 parameters, which is greater than 7 authorized.(‚›Â½ûÿÿÿÿ8Òå“¤‰/
+l	java:S117("QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü¶ÄF8Òå“¤‰/
+u	java:S116"TRename this field "status_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ùÁ¨üÿÿÿÿ8Òå“¤‰/
+s	java:S116!"RRename this field "type_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”‚¬ÿüÿÿÿÿ8Òå“¤‰/
+l	java:S1174"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²ñÌ
+8Òå“¤‰/
+i
+java:S3776˜"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(ÜÑã
+g	java:S117ƒ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹øõ·
+l	java:S1174"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²ñÌ
+8Òå“¤‰/
+f	java:S117{"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷Óî“
+h	java:S100w"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÈúÌËşÿÿÿÿ
 Y
 java:S1710"<Remove the 'NamedQueries' wrapper from this annotation group(ÕÄŠø8Òå“¤‰/
-l	java:S1173"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²ñÌ
-8Òå“¤‰/
-\	java:S1073"AConstructor has 8 parameters, which is greater than 7 authorized.(²ñÌ
-8Òå“¤‰/
-g	java:S117‚"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹øõ·
-d	java:S100‚"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹øõ·
+l	java:S117("QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü¶ÄF8Òå“¤‰/
 X
-java:S1126¸"AReplace this if-then-else statement by a single return statement.(õŸõº
-f	java:S117z"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷Óî“
-l	java:S117'"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü¶ÄF8Òå“¤‰/
-i
-java:S3776—"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(ÜÑã
-b	java:S100~"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡Íè
-s	java:S116 "RRename this field "type_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”‚¬ÿüÿÿÿÿ8Òå“¤‰/
-b	java:S107&"AConstructor has 9 parameters, which is greater than 7 authorized.(‚›Â½ûÿÿÿÿ8Òå“¤‰/
-l	java:S117'"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü¶ÄF8Òå“¤‰/
-l	java:S1173"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²ñÌ
-8Òå“¤‰/
-h	java:S100v"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÈúÌËşÿÿÿÿ
+java:S1126¹"AReplace this if-then-else statement by a single return statement.(õŸõº
+d	java:S100ƒ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹øõ·
+c	java:S100{"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷Óî“
