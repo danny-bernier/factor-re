@@ -1,14 +1,14 @@
 
-c	java:S100K"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£×¯û
-l	java:S116"RRename this field "user_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šÖïéÿÿÿÿÿ
-h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãÅ®Šüÿÿÿÿ
-k	java:S117O"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢ö—ºûÿÿÿÿ
+c	java:S100a"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£×¯û
+c	java:S1001"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨şšş
+s	java:S116"RRename this field "role_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßÊ…¥úÿÿÿÿ8Éç“¤‰/
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­’å¨8Éç“¤‰/
+s	java:S116"RRename this field "user_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šÖïéÿÿÿÿÿ8Éç“¤‰/
+k	java:S117e"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢ö—ºûÿÿÿÿ
+r	java:S117("QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µïöşÿÿÿÿ8Éç“¤‰/
+h	java:S1005"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãÅ®Šüÿÿÿÿ
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡óŠ8Éç“¤‰/
+k	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãÅ®Šüÿÿÿÿ
+h	java:S100e"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢ö—ºûÿÿÿÿ
 h
-java:S3776b"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(ÜÑã
-k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãÅ®Šüÿÿÿÿ
-f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­’å¨
-f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡óŠ
-l	java:S116
-"RRename this field "role_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßÊ…¥úÿÿÿÿ
-h	java:S100O"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢ö—ºûÿÿÿÿ
-c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨şšş
+java:S3776x"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(ÜÑã

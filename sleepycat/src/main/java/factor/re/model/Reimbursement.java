@@ -19,7 +19,6 @@ public class Reimbursement {
 	@CreationTimestamp
 	private Timestamp submitted;
 	@Column(name = "reimb_resolved")
-	@UpdateTimestamp
 	private Timestamp resolved;
 	@Column(name = "reimb_description")
 	private String description;

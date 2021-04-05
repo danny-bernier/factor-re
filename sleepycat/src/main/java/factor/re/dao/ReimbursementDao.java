@@ -68,7 +68,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 			Session session = factory.openSession()){
 			transaction = session.beginTransaction ();
 
-			Query query = session.createQuery("update Reimbursement set statusId=:statusId , resolver=:resolver , resolved=:resolved where id=:id");
+			Query query = session.createQuery("update Reimbursement set status_Id=:statusId , resolver=:resolver , resolved=:resolved where id=:id");
 			query.setParameter ("statusId",statusId);
 			query.setParameter ("resolver",resolverId);
 			query.setParameter ("id",reimbId);
