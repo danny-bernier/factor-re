@@ -17,15 +17,15 @@
         <property name="show_sql">true</property>
 
         <property name = "hibernate.connection.url">
-            jdbc:postgresql://samplepsql.cx2v78knsmfh.us-east-2.rds.amazonaws.com:5432/postgres?currentSchema=reimbursement
+            jdbc:postgresql:URL_REDACTED:5432/postgres?currentSchema=reimbursement
         </property>
 
         <property name = "hibernate.connection.username">
-            caradmin
+            USERNAME_REDACTED
         </property>
 
         <property name = "hibernate.connection.password">
-            password
+            PASSWORD_REDACTED
         </property>
 
         <mapping class = "factor.re.model.Reimbursement"/>
